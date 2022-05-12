@@ -14,18 +14,22 @@ class MailService {
         });
     }
 
+    // async sendActivationLink(to, link) {
+    //     await this.transporter.sendMail({
+    //         from: process.env.SMTP_USER,
+    //         to,
+    //         subject: `Aктивация аккаунта на ${process.env.API_URL}`,
+    //         text: '',
+    //         html:
+    //             `<div>
+    //                 <h1>Для активации перейдите по ссылке</h1>
+    //                 <a href="${link}">${link}</a>
+    //             </div>`
+    //     })
+    // }
+
     async sendActivationLink(to, link) {
-        await this.transporter.sendMail({
-            from: process.env.SMTP_USER,
-            to,
-            subject: `Aктивация аккаунта на ${process.env.API_URL}`,
-            text: '',
-            html:
-                `<div>
-                    <h1>Для активации перейдите по ссылке</h1>
-                    <a href="${link}">${link}</a>
-                </div>`
-        })
+        console.log('sendActivationLink', {to, link});
     }
 }
 
