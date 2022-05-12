@@ -6,4 +6,4 @@ class MailService {
     }
 }
 
-module.exporst = new MailService();
+module.exports = new MailService();
