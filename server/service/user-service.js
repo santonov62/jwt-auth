@@ -71,6 +71,7 @@ class UserService {
         if (!userData || !tokenFromDb) {
             throw ApiError.UnauthorizedError();
         }
+
         
         const user = userModel.findById(userData.id);
         const userDto = new UserDto(user);
