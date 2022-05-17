@@ -1,9 +1,6 @@
 import IUser from '../models/IUser';
 import {makeAutoObservable} from "mobx";
-import {createLegacyArray} from "mobx/dist/types/legacyobservablearray";
-import UserService from "../services/UserService";
 import AuthService from "../services/AuthService";
-import {AxiosResponse} from "axios";
 
 export default class Store {
     user = {} as IUser;
@@ -24,6 +21,7 @@ export default class Store {
     async login(email: string, password: string) {
         try {
             const response = await AuthService.login(email, password);
+            console.log(response)
             const {data: {user, accessToken}} = response;
             localStorage.setItem('token', accessToken);
             this.setAuth(true);
@@ -36,6 +34,7 @@ export default class Store {
     async registration(email: string, password: string) {
         try {
             const response = await AuthService.registration(email, password);
+            console.log(response)
             const {data: {user, accessToken}} = response;
             localStorage.setItem('token', accessToken);
             this.setAuth(true);
@@ -47,7 +46,8 @@ export default class Store {
 
     async logout() {
         try {
-            await AuthService.logout();
+            const response = await AuthService.logout();
+            console.log(response)
             localStorage.removeItem('token');
             this.setAuth(false);
             this.setUser({} as IUser);
