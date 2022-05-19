@@ -40,6 +40,7 @@ function App() {
     return (
         <div className="App">
             <h1>{`Пользователь авторизован ${store.user.email}`}</h1>
+            <h1>{store.user.isActivated ? `пользователь активирован` : `Активируйте аккаунт!`}</h1>
             <button onClick={() => {store.logout()}}>Logout</button>
             <button onClick={fetchUsers}>Get users</button>
             {users.map( user => <div key={user.email}>{user.email}</div>)}
