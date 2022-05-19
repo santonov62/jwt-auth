@@ -15,7 +15,8 @@ $api.interceptors.request.use(config => {
 $api.interceptors.response.use(config => config, async error => {
     try {
         const originalRequest = error.config;
-        if (error.response.status === 401) {
+        if (error.response.status === 401 && error.config && !error.config._isRetry) {
+            originalRequest._isRetry = true
             const response = await axios.get<AuthResponse>(`${API_URL}/refresh`, {withCredentials: true});
             localStorage.setItem('token', response.data.accessToken);
             return $api.request(originalRequest);
@@ -23,6 +24,7 @@ $api.interceptors.response.use(config => config, async error => {
     } catch (e) {
         console.log('Не авторизован');
     }
+    throw error;
 })
 
 export default $api;
