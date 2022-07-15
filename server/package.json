@@ -4,9 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js",
-    "build": "echo 'Build success!'",
-    "test": "echo 'Tests success!'",
+    "dev": "nodemon index.js"
   },
   "author": "",
   "license": "ISC",
