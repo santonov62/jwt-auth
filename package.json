@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "echo \"Build success!\"",
-    "test": "echo \"Tests success!\""
+    "build": "echo \"Build success!!!\"",
+    "test": "echo \"Tests success!!!\""
   },
   "repository": {
     "type": "git",
